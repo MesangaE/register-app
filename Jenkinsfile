@@ -19,21 +19,8 @@ pipeline {
         steps {
         sh "mvn clean package" 
         }
-<<<<<<< HEAD
-    }
+     }
   }
-=======
-   }
-    stage("SonaqQube Analysis"){
-        steps{
-            script{
-                 withSonarQubeEnv(credentialsId:'jenkins-sonarqube-token') {
-                 sh "mvn sonar:sonar"
-                 }
-              }
-          }
-      }
-   }
->>>>>>> 1ef9b732a04182b2ad41fbb120d8d6b5e7047a89
 }
+
 
