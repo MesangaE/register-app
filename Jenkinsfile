@@ -15,11 +15,20 @@ pipeline {
         git branch: 'main' , credentialsId: 'github' , url: 'https://github.com/MesangaE/register-app'      }
         }
 
-       stage("Build Application"){
-    steps {
+    stage("Build Application"){
+        steps {
         sh "mvn clean package" 
-    }
+        }
    }
+    stage("SonaqQube Analysis"){
+        steps{
+            script{
+                withSonarQubeEnv(credentialsId:'jenkins-sonarqube-token') {
+                sh "mvn sonar:sonar"
+                }
+            }
+        }
+    }
   }
 }
 
