@@ -31,9 +31,7 @@ pipeline {
        }
     stage("Quality Gate"){
 	steps {
-	    script{
-		 waitForQuaityGate abortPipeline: false, CredentialsId: 'jenkins-sonarqube-token'
-	    }
+	     waitForQuaityGate abortPipeline: true, CredentialsId: 'jenkins-sonarqube-token
 	}
      }
   }
